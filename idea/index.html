@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AITAM IDEA LAB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-blue': 'var(--brand-blue)',
+                        'brand-dark': 'var(--brand-dark)',
+                        'idea': {
+                            bg: 'var(--idea-bg)',
+                            nav: 'var(--idea-nav)',
+                            primary: 'var(--idea-primary)',
+                            secondary: 'var(--idea-secondary)',
+                            text: 'var(--idea-text)',
+                        }
+                    },
+                    backgroundImage: {
+                        'idea-gradient': 'var(--idea-gradient)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --brand-blue: #1e3a8a;
+            --brand-dark: #111827;
+            --idea-bg: #ffffff;
+            --idea-nav: #ffffff;
+            --idea-primary: #1e3a8a;
+            --idea-secondary: #111827;
+            --idea-text: #1f2937;
+            --idea-gradient: linear-gradient(135deg, #f8fafc, #ffffff, #e2e8f0);
+        }
+
+        .dark {
+            --brand-blue: #3b82f6;
+            --brand-dark: #f8fafc;
+            --idea-bg: #0f172a;
+            --idea-nav: #1e293b;
+            --idea-primary: #3b82f6;
+            --idea-secondary: #60a5fa;
+            --idea-text: #f1f5f9;
+            --idea-gradient: linear-gradient(135deg, #1e293b, #0f172a, #334155);
+        }
+
+        .dark.theme-startup {
+            --brand-blue: #7C3AED;
+            --brand-dark: #F8FAFC;
+            --idea-bg: #0F172A;
+            --idea-nav: #1E1E2F;
+            --idea-primary: #7C3AED;
+            --idea-secondary: #06B6D4;
+            --idea-text: #F8FAFC;
+            --idea-gradient: linear-gradient(135deg, #1E1E2F, #0F172A, #2D2D44);
+        }
+
+        .dark.theme-tech {
+            --brand-blue: #64FFDA;
+            --brand-dark: #ffffff;
+            --idea-bg: #020C1B;
+            --idea-nav: #0A192F;
+            --idea-primary: #64FFDA;
+            --idea-secondary: #00BFFF;
+            --idea-text: #CCD6F6;
+            --idea-gradient: linear-gradient(135deg, #0A192F, #020C1B, #172A45);
+        }
+
+        .dark.theme-growth {
+            --brand-blue: #00FFA3;
+            --brand-dark: #f8fafc;
+            --idea-bg: #020617;
+            --idea-nav: #0F2027;
+            --idea-primary: #00FFA3;
+            --idea-secondary: #38BDF8;
+            --idea-text: #E2E8F0;
+            --idea-gradient: linear-gradient(135deg, #0F2027, #020617, #203A43);
+        }
+
+        body { font-family: 'Inter', sans-serif; font-size: 1.125rem; }
+        p { text-align: justify; }
+        html { scroll-behavior: smooth; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-800 dark:bg-idea-gradient dark:text-idea-text transition-colors duration-300">
+
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-idea-bg shadow-sm sticky top-0 z-50 dark:border-b dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="flex items-center">
+                        <img src="/assets/image/logo.png" alt="AITAM Logo" class="h-16 w-auto">
+                    </div>
+                    
+                  
+
+                    <div class="ml-4 pl-4 border-l border-gray-300 hidden sm:block">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-brand-blue dark:text-idea-primary text-xl leading-tight">IDEA LAB</span>
+                            <span class="text-sm text-gray-500 dark:text-gray-400 uppercase leading-none">AITAM - TEKKALI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex space-x-1 lg:space-x-2 items-center">
+                    <a href="index.html" class="bg-blue-50 dark:bg-gray-800 text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-primary dark:hover:text-idea-secondary">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">About</a>
+                    <a href="facilities.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Facilities</a>
+                    <a href="team.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Team</a>
+                    <a href="activities.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Activities</a>
+                    <a href="sdgs.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">SDGs</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Gallery</a>
+                    <a href="contact.html" class="bg-brand-blue text-white px-5 py-2 rounded-md font-medium hover:bg-blue-900 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1 dark:bg-idea-primary dark:text-idea-nav dark:hover:bg-idea-secondary">Contact Us</a>
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 hover:text-brand-blue dark:text-idea-primary dark:hover:bg-gray-800 transition-all duration-300 ml-2" aria-label="Toggle Theme">
+                        <i id="theme-icon" class="fas fa-moon text-xl"></i>
+                    </button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button class="mobile-menu-button p-2 rounded-md text-gray-600 hover:text-brand-blue dark:text-idea-primary hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="hidden mobile-menu lg:hidden bg-white dark:bg-idea-bg border-t border-gray-100 dark:border-gray-800">
+            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-brand-blue dark:text-idea-primary font-medium dark:hover:bg-gray-800">Home</a>
+            <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">About</a>
+            <a href="facilities.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Facilities</a>
+            <a href="team.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Team</a>
+            <a href="activities.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Activities</a>
+            <a href="sdgs.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">SDGs</a>
+            <a href="gallery.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Gallery</a>
+            <div class="p-4 flex items-center justify-between border-t border-gray-100 dark:border-gray-800">
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Appearance</span>
+                <button id="theme-toggle-mobile" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300" aria-label="Toggle Theme">
+                    <i id="theme-icon-mobile" class="fas fa-moon text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <a href="contact.html" class="block text-center w-full bg-brand-blue dark:bg-idea-primary text-white dark:text-idea-nav px-5 py-2 rounded-md font-medium hover:bg-blue-900 dark:hover:bg-idea-secondary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Hero Content -->
+    <div class="relative bg-white dark:bg-idea-bg overflow-hidden lg:h-[calc(100vh-5rem)]">
+        <div class="max-w-7xl mx-auto lg:h-full">
+            <div class="relative z-10 pb-8 bg-white dark:bg-idea-bg sm:pb-16 md:pb-20 lg:max-w-[41rem] lg:w-full lg:h-full lg:flex lg:flex-col lg:justify-center">
+                <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white dark:text-idea-bg transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,0 100,0 50,100 0,100" />
+                </svg>
+
+                <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-0 lg:px-8 lg:-ml-12 reveal">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-brand-dark dark:text-white sm:text-5xl md:text-6xl mb-6">
+                            
+                            <span class="block idea-fullform"><b class="text-red-500 dark:text-idea-primary">I</b>nnovate - <b class="text-red-500 dark:text-idea-primary">D</b>esign</span>
+                            <span class="block idea-fullform"><b class="text-red-500 dark:text-idea-primary">E</b>ngineer - <b class="text-red-500 dark:text-idea-primary">A</b>pply.</span>
+                            
+                        </h1>
+                        <p class="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-light italic border-l-4 border-brand-blue pl-4 py-1">
+                            "Where Ideas Turn Into Reality" — A multidisciplinary innovation space for students, faculty, and creators at <b class="text-red-500">Aditya Institute of Technology and Management</b>.
+                        </p>
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="/about.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-idea-nav bg-brand-blue dark:bg-idea-primary hover:bg-blue-900 dark:hover:bg-idea-secondary transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                                Explore the Lab
+                            </a>
+                            <a href="/activities.html" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-700 text-base font-medium rounded-md text-brand-dark dark:text-white bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                                Upcoming Events
+                            </a>
+                            <a href="/contact.html" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-700 text-base font-medium rounded-md text-brand-dark dark:text-white bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                                Visit Lab
+                            </a>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-[55%] bg-gray-100 dark:bg-idea-bg group">
+            <!-- Slider Container -->
+            <div id="hero-slider" class="relative h-56 w-full sm:h-72 md:h-96 lg:w-full lg:h-full overflow-hidden">
+                <!-- Images will be cycled here -->
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 slide-image">
+                    <img class="h-full w-full object-cover" src="/assets/image/hero1.png" alt="Students collaborating">
+                </div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slide-image">
+                    <img class="h-full w-full object-cover" src="/assets/image/hero2.png" alt="Lab Activity">
+                </div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slide-image">
+                    <img class="h-full w-full object-cover" src="/assets/image/hero3.png" alt="Innovation">
+                </div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slide-image">
+                    <img class="h-full w-full object-cover" src="/assets/image/hero4.png" alt="Technology">
+                </div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slide-image">
+                    <img class="h-full w-full object-cover" src="/assets/image/hero5.png" alt="Teamwork">
+                </div>
+            </div>
+            
+            <!-- Logos overlay (unchanged) -->
+            <div class="absolute top-0 w-full p-4 flex justify-between items-start bg-gradient-to-b from-white/90 to-transparent lg:hidden z-10">
+                 <!-- Mobile only logo overlay if needed -->
+            </div>
+
+            <div class="absolute top-6 right-8 flex space-x-6 hidden lg:flex z-10">
+               <img src="/assets/image/idea-lab.png" class="h-20 w-auto bg-white dark:bg-idea-bg rounded-full p-1 shadow-md" alt="Idea Lab">
+               <img src="/assets/image/25.png" class="h-20 w-auto bg-white dark:bg-idea-bg rounded-full p-1 shadow-md" alt="25">
+               <img src="/assets/image/aicte.png" class="h-20 w-auto bg-white dark:bg-idea-bg rounded-full p-1 shadow-md" alt="AICTE">
+               <img src="/assets/image/banner.png" class="h-20 w-auto" alt="Banner">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide-image');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.remove('opacity-0');
+                        slide.classList.add('opacity-100');
+                    } else {
+                        slide.classList.remove('opacity-100');
+                        slide.classList.add('opacity-0');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            // Initialize automatic slideshow
+            setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        });
+    </script>
+
+    <!-- Stats Bar -->
+    <!-- Stats Strip -->
+    <!-- Stats Strip (Tailwind) -->
+    <div class="bg-brand-blue py-4 overflow-hidden whitespace-nowrap reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row flex-wrap justify-around items-start md:items-center gap-4">
+                <div class="flex items-center gap-2 text-white text-sm font-medium">
+                    <i class="fas fa-award text-lg text-amber-400"></i>
+                    <span>AICTE Approved Initiative</span>
+                </div>
+                <div class="flex items-center gap-2 text-white text-sm font-medium">
+                    <i class="fas fa-university text-lg text-amber-400"></i>
+                    <span>Affiliated to JNTUGV, Vizianagaram</span>
+                </div>
+                <div class="flex items-center gap-2 text-white text-sm font-medium">
+                    <i class="fas fa-star text-lg text-amber-400"></i>
+                    <span>NAAC A+ Accredited</span>
+                </div>
+                <div class="flex items-center gap-2 text-white text-sm font-medium">
+                    <i class="fas fa-trophy text-lg text-amber-400"></i>
+                    <span>NIRF Ranked 201–300</span>
+                </div>
+                <div class="flex items-center gap-2 text-white text-sm font-medium">
+                    <i class="fas fa-users text-lg text-amber-400"></i>
+                    <span>4500+ Students | 480 Faculty</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="py-24 bg-white dark:bg-idea-nav reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                    <img class="relative rounded-2xl shadow-2xl w-full object-cover h-[450px]" src="/assets/image/bg-image-17.webp" alt="Students in lab">
+                     
+                     <!-- Floating Badge -->
+                     <div class="absolute -bottom-6 -right-6 bg-brand-dark/95 backdrop-blur text-white p-5 rounded-lg shadow-xl border-l-4 border-brand-blue animate-float">
+                         <div class="text-3xl font-extrabold tracking-tighter">IDEA</div>
+                         <div class="text-xs uppercase tracking-widest font-medium text-blue-400">Innovation Hub</div>
+                     </div>
+                </div>
+                
+                <div class="lg:pl-8">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 dark:bg-gray-800 text-brand-blue dark:text-idea-primary text-xs font-bold uppercase tracking-wider mb-6">
+                        <span class="w-2 h-2 bg-brand-blue rounded-full mr-2"></span>
+                        About Us
+                    </div>
+                    <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
+                        What is the <span class="text-[#1e3a8a]">AICTE IDEA Lab?</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        The AICTE IDEA Lab at <b class="text-gray-900 dark:text-white">Aditya Institute of Technology and Management (AITAM), Tekkali</b> is a multidisciplinary innovation space designed to inspire creativity, encourage problem-solving, and nurture future-ready skills.
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+                        IDEA stands for <span class="font-medium text-brand-blue dark:text-idea-primary">Idea Development, Evaluation & Application</span> — an initiative by AICTE to strengthen STEM hands-on learning and build a culture of entrepreneurship.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4 mb-10">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-brand-blue dark:text-idea-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700">Open to all students & faculty</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-brand-blue dark:text-idea-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700">Interdisciplinary collaboration</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-brand-blue dark:text-idea-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700">Real-world prototyping</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-brand-blue dark:text-idea-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700">Industry-grade equipment</span>
+                        </div>
+                         <div class="flex items-center">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-brand-blue dark:text-idea-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700">Startup & Innovation support</span>
+                        </div>
+                         <div class="flex items-center">
+                           <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-brand-blue dark:text-idea-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700">Design thinking workshops</span>
+                        </div>
+                    </div>
+                    
+                     <a href="about.html" class="group inline-flex items-center px-8 py-3.5 border border-transparent text-sm font-bold rounded-lg shadow-sm text-white dark:text-idea-nav bg-brand-blue dark:bg-idea-primary hover:bg-blue-900 dark:hover:bg-idea-secondary transition duration-150 ring-1 ring-white/10">
+                        Learn More
+                        <svg class="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="py-24 bg-blue-50 dark:bg-gray-800/50 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-brand-blue dark:text-idea-primary text-xs font-bold uppercase tracking-wider mb-4">
+                 Our Programs
+            </div>
+            
+            <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight sm:text-5xl mb-6">
+                What We <span class="text-brand-blue dark:text-idea-primary relative whitespace-nowrap">
+                    Do
+                    <svg class="absolute w-full h-3 -bottom-1 left-0 text-blue-200 fill-current -z-10" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5 L 100 10 L 0 10 Z"></path></svg>
+                </span>
+            </h2>
+            
+            <p class="max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400 mb-16">
+                From hackathons to hands-on workshops — there's always something exciting happening at the IDEA Lab.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white dark:bg-idea-nav p-8 rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 border border-gray-100 group hover:-translate-y-1 reveal">
+                    <div class="h-14 w-14 bg-blue-50 dark:bg-gray-800 rounded-2xl flex items-center justify-center text-brand-blue dark:text-idea-primary mx-auto mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Skill Development</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Certification-based workshops on emerging technologies and industry-standard tools.</p>
+                </div>
+                 <!-- Card 2 -->
+                <div class="bg-white dark:bg-idea-nav p-8 rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 border border-gray-100 group hover:-translate-y-1 reveal">
+                     <div class="h-14 w-14 bg-blue-50 dark:bg-gray-800 rounded-2xl flex items-center justify-center text-brand-blue dark:text-idea-primary mx-auto mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Hackathons</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Competitive innovation challenges participating in South India's biggest tech events.</p>
+                </div>
+                 <!-- Card 3 -->
+                <div class="bg-white dark:bg-idea-nav p-8 rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 border border-gray-100 group hover:-translate-y-1 reveal">
+                     <div class="h-14 w-14 bg-blue-50 dark:bg-gray-800 rounded-2xl flex items-center justify-center text-brand-blue dark:text-idea-primary mx-auto mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Startup Support</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Entrepreneurial eco-system, incubation support, and expert mentoring programs.</p>
+                </div>
+                 <!-- Card 4 -->
+                <div class="bg-white dark:bg-idea-nav p-8 rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 border border-gray-100 group hover:-translate-y-1 reveal">
+                     <div class="h-14 w-14 bg-blue-50 dark:bg-gray-800 rounded-2xl flex items-center justify-center text-brand-blue dark:text-idea-primary mx-auto mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Community Outreach</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Community engagement projects and collaborative research initiatives having social impact.</p>
+                </div>
+            </div>
+             <div class="mt-16">
+                 <a href="#" class="inline-flex items-center px-8 py-3 bg-brand-blue dark:bg-idea-primary border border-transparent rounded-lg font-bold text-white dark:text-idea-nav hover:bg-blue-900 dark:hover:bg-idea-secondary transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    See All Activities
+                    <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+             </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-white dark:bg-idea-nav relative overflow-hidden reveal">
+        <div class="absolute inset-0 opacity-5">
+             <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                 <path d="M0 100 C 20 0 50 0 100 100 Z" fill="currentColor"></path>
+             </svg>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-4xl font-extrabold text-brand-dark dark:text-white sm:text-5xl mb-6">
+                Ready to <span class="text-brand-blue dark:text-idea-primary">Step Into the IDEA Lab?</span>
+            </h2>
+            <p class="text-xl text-gray-500 dark:text-gray-400 mb-12 font-light">We'll experiment, learn, and create something amazing — together.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-lg text-white dark:text-idea-nav bg-brand-blue dark:bg-idea-primary hover:bg-blue-900 dark:hover:bg-idea-secondary shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
+                    Visit Us
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-gray-200 dark:border-gray-700 text-lg font-bold rounded-lg text-brand-dark dark:text-white bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>
+                    Join an Event
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-gray-200 dark:border-gray-700 text-lg font-bold rounded-lg text-brand-dark dark:text-white bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+                    Meet the Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-transparent border-t border-gray-200 pt-16 pb-12 dark:bg-idea-nav dark:border-gray-800 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Branding -->
+                <div class="space-y-6">
+                     <div class="flex items-center gap-3">
+                        <img src="/assets/image/logo.png" alt="Logo" class="h-20 w-auto rounded-md">
+                         <div class="flex flex-col">
+                            <span class="font-bold text-gray-900 dark:text-white text-base dark:text-white">aitam</span>
+                            <span class="text-[10px] text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider dark:text-gray-400">AICTE IDEA LAB</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed dark:text-gray-400">
+                        A multidisciplinary innovation space at Aditya Institute of Technology and Management, empowering students and faculty to transform ideas into reality.
+                    </p>
+                    <div class="flex space-x-5">
+
+                        <!-- LinkedIn, YouTube etc -->
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-6 dark:text-white">Quick Links</h3>
+                    <ul class="space-y-3 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a href="index.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">About IDEA Lab</a></li>
+                        <li><a href="facilities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Facilities</a></li>
+                        <li><a href="team.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Our Team</a></li>
+                        <li><a href="activities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Activities & Events</a></li>
+                         <li><a href="sdgs.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">SDGs</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                     <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-6 dark:text-white">Resources</h3>
+                    <ul class="space-y-3 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a href="activities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Workshop Calendar</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Project Gallery</a></li>
+                        <li><a href="facilities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Equipment List</a></li>
+
+                        <li><a href="https://www.adityatekkali.edu.in/" target="_blank" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">AITAM Website</a></li>
+                        <li><a href="https://www.aicte-india.org/" target="_blank" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">AICTE Portal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div>
+                     <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-6 dark:text-white">Contact Us</h3>
+                     <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400">
+                         <li class="flex items-start">
+                             <svg class="h-6 w-6 text-brand-blue dark:text-idea-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                             <span>AITAM Campus, K. Kotturu, Tekkali, Srikakulam Dist., Andhra Pradesh - 532201</span>
+                         </li>
+                         <li class="flex items-center">
+                             <svg class="h-6 w-6 text-brand-blue dark:text-idea-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                             <span>+91 123 456 7890</span>
+                         </li>
+                         <li class="flex items-center">
+                             <svg class="h-6 w-6 text-brand-blue dark:text-idea-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                             <span>aicteideas@adityatekkali.edu.in</span>
+                         </li>
+                     </ul>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs text-gray-400">© 2024 AICTE-IDEA Lab at AITAM. All Rights Reserved.</p>
+                <div class="mt-4 md:mt-0 text-xs text-gray-400 flex items-center">
+                    Developed by the AITAM Web Team | <a href="https://www.adityatekkali.edu.in/" target="_blank" class="text-brand-blue dark:text-idea-primary ml-1 font-medium hover:underline">adityatekkali.edu.in</a>
+                    <button id="scrollToTop" class="bg-gray-200 text-gray-600 dark:bg-gray-800 dark:text-gray-400 rounded p-2 ml-4 hover:bg-brand-blue dark:hover:bg-idea-primary hover:text-white dark:hover:text-idea-nav transition-all duration-300 hover:-translate-y-1">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
+<script>
+        // Theme Toggle Script
+        const html = document.documentElement;
+
+        // Theme Toggle Script
+        const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+        const themeIcons = [document.getElementById('theme-icon'), document.getElementById('theme-icon-mobile')];
+
+        function updateIcons(theme) {
+            themeIcons.forEach(icon => {
+                if (!icon) return;
+                if (theme === 'dark') icon.className = 'fas fa-moon text-xl';
+                else if (theme === 'startup') icon.className = 'fas fa-rocket text-xl';
+                else if (theme === 'tech') icon.className = 'fas fa-microchip text-xl';
+                else if (theme === 'growth') icon.className = 'fas fa-seedling text-xl';
+                else icon.className = 'fas fa-sun text-xl';
+            });
+        }
+
+        function initTheme() {
+            const theme = localStorage.theme || 'light';
+            html.classList.remove('dark', 'theme-startup', 'theme-tech', 'theme-growth');
+            if (theme === 'dark') {
+                html.classList.add('dark');
+            } else if (theme === 'startup') {
+                html.classList.add('dark', 'theme-startup');
+            } else if (theme === 'tech') {
+                html.classList.add('dark', 'theme-tech');
+            } else if (theme === 'growth') {
+                html.classList.add('dark', 'theme-growth');
+            }
+            updateIcons(theme);
+        }
+        
+        initTheme();
+
+        themeToggles.forEach(btn => {
+            if (!btn) return;
+            btn.addEventListener('click', () => {
+                const currentTheme = localStorage.theme || 'light';
+                let newTheme = 'light';
+                
+                if (currentTheme === 'light') newTheme = 'dark';
+                else if (currentTheme === 'dark') newTheme = 'startup';
+                else if (currentTheme === 'startup') newTheme = 'tech';
+                else if (currentTheme === 'tech') newTheme = 'growth';
+                else newTheme = 'light';
+
+                localStorage.theme = newTheme;
+                initTheme();
+            });
+        });
+
+        // Scroll to Top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        if (scrollToTopBtn) {
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
