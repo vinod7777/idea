@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities & Events - AITAM IDEA LAB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-blue': 'var(--brand-blue)',
+                        'brand-dark': 'var(--brand-dark)',
+                        'idea': {
+                            bg: 'var(--idea-bg)',
+                            nav: 'var(--idea-nav)',
+                            primary: 'var(--idea-primary)',
+                            secondary: 'var(--idea-secondary)',
+                            text: 'var(--idea-text)',
+                        }
+                    },
+                    backgroundImage: {
+                        'idea-gradient': 'var(--idea-gradient)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --brand-blue: #1e3a8a;
+            --brand-dark: #111827;
+            --idea-bg: #ffffff;
+            --idea-nav: #ffffff;
+            --idea-primary: #1e3a8a;
+            --idea-secondary: #111827;
+            --idea-text: #1f2937;
+            --idea-gradient: linear-gradient(135deg, #f8fafc, #ffffff, #e2e8f0);
+        }
+
+        .dark {
+            --brand-blue: #3b82f6;
+            --brand-dark: #f8fafc;
+            --idea-bg: #0f172a;
+            --idea-nav: #1e293b;
+            --idea-primary: #3b82f6;
+            --idea-secondary: #60a5fa;
+            --idea-text: #f1f5f9;
+            --idea-gradient: linear-gradient(135deg, #1e293b, #0f172a, #334155);
+        }
+
+        .dark.theme-startup {
+            --brand-blue: #7C3AED;
+            --brand-dark: #F8FAFC;
+            --idea-bg: #0F172A;
+            --idea-nav: #1E1E2F;
+            --idea-primary: #7C3AED;
+            --idea-secondary: #06B6D4;
+            --idea-text: #F8FAFC;
+            --idea-gradient: linear-gradient(135deg, #1E1E2F, #0F172A, #2D2D44);
+        }
+
+        .dark.theme-tech {
+            --brand-blue: #64FFDA;
+            --brand-dark: #ffffff;
+            --idea-bg: #020C1B;
+            --idea-nav: #0A192F;
+            --idea-primary: #64FFDA;
+            --idea-secondary: #00BFFF;
+            --idea-text: #CCD6F6;
+            --idea-gradient: linear-gradient(135deg, #0A192F, #020C1B, #172A45);
+        }
+
+        .dark.theme-growth {
+            --brand-blue: #00FFA3;
+            --brand-dark: #f8fafc;
+            --idea-bg: #020617;
+            --idea-nav: #0F2027;
+            --idea-primary: #00FFA3;
+            --idea-secondary: #38BDF8;
+            --idea-text: #E2E8F0;
+            --idea-gradient: linear-gradient(135deg, #0F2027, #020617, #203A43);
+        }
+
+        body { font-family: 'Inter', sans-serif; font-size: 1.125rem; }
+        p { text-align: justify; }
+        html { scroll-behavior: smooth; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-idea-gradient dark:text-idea-text transition-colors duration-300">
+
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-idea-bg shadow-sm sticky top-0 z-50 dark:border-b dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="flex items-center">
+                        <img src="/assets/image/logo.png" alt="AITAM Logo" class="h-16 w-auto">
+                    </div>
+                    <div class="ml-4 pl-4 border-l border-gray-300 hidden sm:block">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-brand-blue dark:text-idea-primary text-xl leading-tight">IDEA LAB</span>
+                            <span class="text-sm text-gray-500 dark:text-gray-400 uppercase leading-none">AITAM - TEKKALI</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-1 lg:space-x-2 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">About</a>
+                    <a href="facilities.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Facilities</a>
+                    <a href="team.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Team</a>
+                    <a href="activities.html" class="bg-blue-50 dark:bg-gray-800 text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md hover:bg-blue-100 transition dark:text-idea-primary dark:hover:text-idea-secondary">Activities</a>
+                    <a href="sdgs.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">SDGs</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-brand-blue dark:text-idea-primary font-medium px-3 py-2 rounded-md transition dark:text-idea-text dark:hover:text-idea-primary">Gallery</a>
+                    <a href="contact.html" class="bg-brand-blue text-white px-5 py-2 rounded-md font-medium hover:bg-blue-900 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1 dark:bg-idea-primary dark:text-idea-nav dark:hover:bg-idea-secondary">Contact Us</a>
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 hover:text-brand-blue dark:text-idea-primary dark:hover:bg-gray-800 transition-all duration-300 ml-2" aria-label="Toggle Theme">
+                        <i id="theme-icon" class="fas fa-moon text-xl"></i>
+                    </button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button class="mobile-menu-button p-2 rounded-md text-gray-600 hover:text-brand-blue dark:text-idea-primary hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu lg:hidden bg-white dark:bg-idea-bg border-t border-gray-100 dark:border-gray-800">
+            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Home</a>
+            <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">About</a>
+            <a href="facilities.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Facilities</a>
+            <a href="team.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Team</a>
+            <a href="activities.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-brand-blue dark:text-idea-primary font-medium dark:hover:bg-gray-800">Activities</a>
+            <a href="sdgs.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">SDGs</a>
+            <a href="gallery.html" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700 dark:text-idea-text dark:hover:bg-gray-800 dark:hover:text-idea-primary">Gallery</a>
+            <div class="px-4 py-2 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Appearance</span>
+                <button id="theme-toggle-mobile" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300" aria-label="Toggle Theme">
+                    <i id="theme-icon-mobile" class="fas fa-moon text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <a href="contact.html" class="block text-center w-full bg-brand-blue dark:bg-idea-primary text-white dark:text-idea-nav px-5 py-2 rounded-md font-medium hover:bg-blue-900 dark:hover:bg-idea-secondary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="pt-16 pb-12 bg-white text-center dark:bg-idea-bg reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-center mb-4" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                    <li><a href="index.html" class="hover:text-brand-blue dark:text-idea-primary transition">Home</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-gray-900 dark:text-white font-medium">Activities & Events</li>
+                </ol>
+            </nav>
+            <h1 class="text-4xl font-extrabold text-brand-dark dark:text-white sm:text-5xl tracking-tight mb-4">
+                Activities & <span class="text-brand-blue dark:text-idea-primary">Events</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-500 dark:text-gray-400">
+                Empowering students through hands-on workshops, innovation challenges, and collaborative events.
+            </p>
+             <div class="mt-8 flex justify-center">
+                <a href="#upcoming" class="text-brand-blue dark:text-idea-primary font-medium hover:underline flex items-center">
+                    <i class="fas fa-calendar-alt mr-2"></i> View Calendar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Activities Section -->
+    <section class="py-16 bg-white dark:bg-idea-nav reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                 <h2 class="text-3xl font-extrabold text-brand-dark dark:text-white sm:text-4xl">
+                    Core <span class="text-brand-blue dark:text-idea-primary">Activities</span>
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-500 dark:text-gray-400">
+                    A comprehensive range of innovation programs designed to build skills, spark creativity, and connect students to real opportunities.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <i class="fas fa-tools text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Skill Development Workshops</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Hands-on technical sessions and workshops covering key technologies like 3D printing, IoT, robotics, PCB design, and software programming.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Practical Skills</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Hands-on</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">STEM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <i class="fas fa-lightbulb text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Hackathons, Ideathons & Problemathons</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">High-energy competitions where students solve real-world problems and tackle industry challenges within tight timeframes to innovate and design solutions.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Innovation</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Competitions</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <i class="fas fa-project-diagram text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Interdisciplinary Projects</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Mini and major projects that bring together students from various engineering branches to work collaboratively on complex engineering challenges.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Team Collaboration</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Projects</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <i class="fas fa-rocket text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Startup & Entrepreneurship Support</h3>
+                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">Promoting innovation and guiding students from idea to startup. Helping incubate ideas, offering mentorship, and connecting students with funding opportunities.</div>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Incubation</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Mentorship</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Startup School</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                         <i class="fas fa-hands-helping text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Community Engagement & Outreach</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Training programs for schools and polytechnic colleges to spark curiosity in STEM. Also extends help to local communities through technological interventions.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Social Impact</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Skill Enhancement</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Outreach</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <i class="fas fa-cube text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Product Design & Value Added Manufacturing</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Helping students design and realize products using cutting-edge tools like CNC, Laser Cutters, and 3D Printers. Training on product lifecycle from concept to market.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Product Dev</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Prototyping</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Manufacturing</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card 7 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <i class="fas fa-chart-line text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Collaborative Research & Innovation Challenges</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Linkages with research labs and industry partners for cutting-edge projects. Encouraging students to apply for patents and publish research work.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Research</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Industry Connect</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Patents</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="flex bg-white dark:bg-idea-nav rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300 reveal">
+                    <div class="w-24 bg-blue-50 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <i class="fas fa-bullhorn text-3xl text-brand-blue dark:text-idea-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Awareness & Demonstration Sessions</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Regular weekly sessions to demonstrate the capabilities of the lab facilities, inviting guest speakers, experts, and fostering a culture of continuous learning.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand-blue dark:text-idea-primary">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Seminars</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Live Demos</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-gray-800 rounded">Guest Talks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab Highlights Section (Themed) -->
+    <section class="py-20 bg-brand-blue dark:bg-idea-nav text-white relative overflow-hidden transition-colors duration-300 reveal">
+        <div class="absolute inset-0 opacity-10 bg-[url('/assets/image/bg-pattern.png')] bg-cover"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider mb-4 inline-block backdrop-blur-sm">
+                    Milestones
+                </span>
+                <h2 class="text-3xl font-extrabold sm:text-4xl text-white">
+                    Lab <span class="text-blue-200 dark:text-idea-primary">Highlights</span>
+                </h2>
+            </div>
+
+            <!-- Timeline/List -->
+            <div class="space-y-6 relative border-l-2 border-gray-700 ml-4 md:ml-0 md:pl-0">
+                
+                <!-- Highlight 1 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:flex items-start">
+                        <div class="hidden md:block w-32 text-right pr-8 pt-1 text-blue-100/70 dark:text-gray-400 font-mono text-sm">Oct 2021</div>
+                        <div class="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-white dark:bg-idea-primary ring-4 ring-brand-blue dark:ring-idea-nav md:left-auto md:relative md:w-3 md:h-3 md:mt-1.5 md:mx-4"></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/10 flex-1 hover:bg-white/20 transition duration-300">
+                            <h3 class="text-xl font-bold text-white mb-2">AICTE IDEA Lab Inaugurated at AITAM</h3>
+                            <p class="text-blue-50/80 dark:text-gray-300 text-sm">The lab was officially inaugurated by eminent dignitaries, opening its doors to all departments. A workshop on "Idea to Product" marked the grand opening.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 2 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:flex items-start">
+                        <div class="hidden md:block w-32 text-right pr-8 pt-1 text-blue-100/70 dark:text-gray-400 font-mono text-sm">Jan 2022</div>
+                        <div class="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-white dark:bg-idea-primary ring-4 ring-brand-blue dark:ring-idea-nav md:left-auto md:relative md:w-3 md:h-3 md:mt-1.5 md:mx-4"></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/10 flex-1 hover:bg-white/20 transition duration-300">
+                            <h3 class="text-xl font-bold text-white mb-2">National Festival Hackathon - Season 1</h3>
+                            <p class="text-blue-50/80 dark:text-gray-300 text-sm">A 24-hour national level hackathon witnessed by 300+ participants. Theme: "Smart Villages". 15 prototypes developed and 3 winning teams awarded.</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Highlight 3 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:flex items-start">
+                        <div class="hidden md:block w-32 text-right pr-8 pt-1 text-blue-100/70 dark:text-gray-400 font-mono text-sm">Aug 2022</div>
+                        <div class="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-white dark:bg-idea-primary ring-4 ring-brand-blue dark:ring-idea-nav md:left-auto md:relative md:w-3 md:h-3 md:mt-1.5 md:mx-4"></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/10 flex-1 hover:bg-white/20 transition duration-300">
+                            <h3 class="text-xl font-bold text-white mb-2">Gathering Champions - Season 2</h3>
+                            <p class="text-blue-50/80 dark:text-gray-300 text-sm">An internal idea championship to scout talent. The selected champions continued to work on their ideas leading to patents. Focused on interdisciplinary solutions for campus problems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Highlight 4 -->
+                <div class="relative pl-8 md:pl-0">
+                     <div class="md:flex items-start">
+                        <div class="hidden md:block w-32 text-right pr-8 pt-1 text-blue-100/70 dark:text-gray-400 font-mono text-sm">Dec 2022</div>
+                        <div class="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-white dark:bg-idea-primary ring-4 ring-brand-blue dark:ring-idea-nav md:left-auto md:relative md:w-3 md:h-3 md:mt-1.5 md:mx-4"></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/10 flex-1 hover:bg-white/20 transition duration-300">
+                            <h3 class="text-xl font-bold text-white mb-2">Idea Lab Equipment Procurement Drive</h3>
+                            <p class="text-blue-50/80 dark:text-gray-300 text-sm">Major enhancement of lab facilities: Added 5-axis CNC, Industrial Robotic Arms, and advanced bio-sensors, significantly scaling the prototyping capabilities of the lab.</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Highlight 5 -->
+                 <div class="relative pl-8 md:pl-0">
+                     <div class="md:flex items-start">
+                        <div class="hidden md:block w-32 text-right pr-8 pt-1 text-blue-100/70 dark:text-gray-400 font-mono text-sm">Mar 2023</div>
+                        <div class="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-white dark:bg-idea-primary ring-4 ring-brand-blue dark:ring-idea-nav md:left-auto md:relative md:w-3 md:h-3 md:mt-1.5 md:mx-4"></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/10 flex-1 hover:bg-white/20 transition duration-300">
+                            <h3 class="text-xl font-bold text-white mb-2">International Collaboration</h3>
+                            <p class="text-blue-50/80 dark:text-gray-300 text-sm">A memorandum of understanding (MoU) signed with global partners to encourage collaborative projects. Students participated in a global exchange program virtually.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="upcoming" class="py-20 bg-gray-50 dark:bg-transparent reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                 <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 dark:bg-gray-800 text-brand-blue dark:text-idea-primary text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fas fa-calendar-check mr-2"></i> Register Now
+                </div>
+                <h2 class="text-3xl font-extrabold text-brand-dark dark:text-white sm:text-4xl">
+                    Upcoming <span class="text-brand-blue dark:text-idea-primary">Events</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-gray-500 dark:text-gray-400">
+                    Stay tuned and involved with the latest sessions and workshops.
+                </p>
+                 <p class="text-xs text-gray-400 mt-1">Upcoming events for the A.Y 2024-25</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="bg-white dark:bg-idea-nav rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition reveal">
+                    <div class="p-8 pb-4">
+                        <div class="w-12 h-12 bg-blue-50 dark:bg-gray-800 rounded-lg flex items-center justify-center text-brand-blue dark:text-idea-primary mb-4">
+                            <i class="fas fa-cube text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">3D Printing Bootcamp</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">A beginner's intensive workshop on designing 3D models and operating printers. Open to all branches.</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <a href="#" class="text-xs font-bold text-brand-blue dark:text-idea-primary uppercase hover:underline">Register Here</a>
+                            <span class="text-xs text-gray-400 px-2 py-1 bg-gray-100 rounded">Jan 22nd</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="bg-white dark:bg-idea-nav rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition reveal">
+                    <div class="p-8 pb-4">
+                        <div class="w-12 h-12 bg-blue-50 dark:bg-gray-800 rounded-lg flex items-center justify-center text-brand-blue dark:text-idea-primary mb-4">
+                             <i class="fas fa-microchip text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">IoT with Arduino Workshop</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Hands-on session using Arduino kits to build smart sensor circuits. Learn coding and interfacing sensors.</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <a href="#" class="text-xs font-bold text-brand-blue dark:text-idea-primary uppercase hover:underline">Register Now</a>
+                            <span class="text-xs text-gray-400 px-2 py-1 bg-gray-100 rounded">Feb 10th</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="bg-white dark:bg-idea-nav rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition reveal">
+                     <div class="p-8 pb-4">
+                        <div class="w-12 h-12 bg-blue-50 dark:bg-gray-800 rounded-lg flex items-center justify-center text-brand-blue dark:text-idea-primary mb-4">
+                            <i class="fas fa-lightbulb text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Design Thinking Sprint</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">A curated sprint focusing on problem identification, ideation, and rapid prototyping techniques for innovative solutions.</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <a href="#" class="text-xs font-bold text-brand-blue dark:text-idea-primary uppercase hover:underline">Learn More</a>
+                            <span class="text-xs text-gray-400 px-2 py-1 bg-gray-100 rounded">March 5th</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-idea-nav bg-brand-blue dark:bg-idea-primary hover:bg-blue-900 dark:hover:bg-idea-secondary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <i class="fas fa-th-large mr-2"></i> Explore All Events
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA: Want to Participate? -->
+    <section class="py-16 bg-white dark:bg-idea-nav text-center reveal">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-brand-dark dark:text-white mb-4">Want to <span class="text-brand-blue dark:text-idea-primary">Participate?</span></h2>
+            <p class="text-lg text-gray-500 dark:text-gray-400 mb-8">
+                Contact lab managers for more details on events and how to join the lab activities.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                 <a href="contact.html" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-sm font-bold rounded-lg shadow-sm text-white dark:text-idea-nav bg-brand-blue dark:bg-idea-primary hover:bg-blue-900 dark:hover:bg-idea-secondary transition-all duration-300 hover:shadow-lg hover:-translate-y-1 uppercase">
+                    <i class="fas fa-envelope mr-2"></i> Contact Us
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 dark:border-gray-700 text-sm font-bold rounded-lg shadow-sm text-brand-dark dark:text-white bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 uppercase">
+                    <i class="fas fa-user-plus mr-2"></i> Join As Partner
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-transparent border-t border-gray-200 pt-16 pb-12 dark:bg-idea-nav dark:border-gray-800 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Branding -->
+                <div class="space-y-6">
+                     <div class="flex items-center gap-3">
+                        <img src="/assets/image/logo.png" alt="Logo" class="h-20 w-auto rounded-md">
+                         <div class="flex flex-col">
+                            <span class="font-bold text-gray-900 dark:text-white text-base dark:text-white">aitam</span>
+                            <span class="text-[10px] text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider dark:text-gray-400">AICTE IDEA LAB</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed dark:text-gray-400">
+                        A multidisciplinary innovation space at Aditya Institute of Technology and Management, empowering students and faculty to transform ideas into reality.
+                    </p>
+                    <div class="flex space-x-5">
+
+                        <!-- LinkedIn, YouTube etc -->
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-6 dark:text-white">Quick Links</h3>
+                    <ul class="space-y-3 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a href="index.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">About IDEA Lab</a></li>
+                        <li><a href="facilities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Facilities</a></li>
+                        <li><a href="team.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Our Team</a></li>
+                        <li><a href="activities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Activities & Events</a></li>
+                         <li><a href="sdgs.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">SDGs</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                     <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-6 dark:text-white">Resources</h3>
+                    <ul class="space-y-3 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a href="activities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Workshop Calendar</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Project Gallery</a></li>
+                        <li><a href="facilities.html" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">Equipment List</a></li>
+
+                        <li><a href="https://www.adityatekkali.edu.in/" target="_blank" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">AITAM Website</a></li>
+                        <li><a href="https://www.aicte-india.org/" target="_blank" class="hover:text-brand-blue dark:text-idea-primary hover:translate-x-1 transition-transform inline-block">AICTE Portal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div>
+                     <h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-6 dark:text-white">Contact Us</h3>
+                     <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400">
+                         <li class="flex items-start">
+                             <svg class="h-6 w-6 text-brand-blue dark:text-idea-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                             <span>AITAM Campus, K. Kotturu, Tekkali, Srikakulam Dist., Andhra Pradesh - 532201</span>
+                         </li>
+                         <li class="flex items-center">
+                             <svg class="h-6 w-6 text-brand-blue dark:text-idea-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                             <span>+91 123 456 7890</span>
+                         </li>
+                         <li class="flex items-center">
+                             <svg class="h-6 w-6 text-brand-blue dark:text-idea-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                             <span>aicteideas@adityatekkali.edu.in</span>
+                         </li>
+                     </ul>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs text-gray-400">© 2024 AICTE-IDEA Lab at AITAM. All Rights Reserved.</p>
+                <div class="mt-4 md:mt-0 text-xs text-gray-400 flex items-center">
+                    Developed by the AITAM Web Team | <a href="https://www.adityatekkali.edu.in/" target="_blank" class="text-brand-blue dark:text-idea-primary ml-1 font-medium hover:underline">adityatekkali.edu.in</a>
+                    <button id="scrollToTop" class="bg-gray-200 text-gray-600 dark:bg-gray-800 dark:text-gray-400 rounded p-2 ml-4 hover:bg-brand-blue dark:hover:bg-idea-primary hover:text-white dark:hover:text-idea-nav transition-all duration-300 hover:-translate-y-1">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
+<script>
+        // Theme Toggle Script
+        // Theme Toggle Script
+        const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+        const themeIcons = [document.getElementById('theme-icon'), document.getElementById('theme-icon-mobile')];
+        const html = document.documentElement;
+
+        function updateIcons(theme) {
+            themeIcons.forEach(icon => {
+                if (!icon) return;
+                if (theme === 'dark') icon.className = 'fas fa-moon text-xl';
+                else if (theme === 'startup') icon.className = 'fas fa-rocket text-xl';
+                else if (theme === 'tech') icon.className = 'fas fa-microchip text-xl';
+                else if (theme === 'growth') icon.className = 'fas fa-seedling text-xl';
+                else icon.className = 'fas fa-sun text-xl';
+            });
+        }
+
+        function initTheme() {
+            const theme = localStorage.theme || 'light';
+            html.classList.remove('dark', 'theme-startup', 'theme-tech', 'theme-growth');
+            if (theme === 'dark') {
+                html.classList.add('dark');
+            } else if (theme === 'startup') {
+                html.classList.add('dark', 'theme-startup');
+            } else if (theme === 'tech') {
+                html.classList.add('dark', 'theme-tech');
+            } else if (theme === 'growth') {
+                html.classList.add('dark', 'theme-growth');
+            }
+            updateIcons(theme);
+        }
+        
+        initTheme();
+
+        themeToggles.forEach(btn => {
+            if (!btn) return;
+            btn.addEventListener('click', () => {
+                const currentTheme = localStorage.theme || 'light';
+                let newTheme = 'light';
+                
+                if (currentTheme === 'light') newTheme = 'dark';
+                else if (currentTheme === 'dark') newTheme = 'startup';
+                else if (currentTheme === 'startup') newTheme = 'tech';
+                else if (currentTheme === 'tech') newTheme = 'growth';
+                else newTheme = 'light';
+
+                localStorage.theme = newTheme;
+                initTheme();
+            });
+        });
+
+        // Scroll to Top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        if (scrollToTopBtn) {
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
